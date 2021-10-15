@@ -1,6 +1,6 @@
 'use strict';
 
 module.exports = {
-    loginId: '',
-    transactionKey: ''
+    loginId: process.env.AUTHORIZE_LOGIN_ID,
+    transactionKey: process.env.AUTHORIZE_TRANSACTION_KEY
 };

@@ -1,5 +1,6 @@
 'use strict';
 
+require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -73,6 +74,8 @@ app.post('/checkout', (req, res) => {
         const apiResponse = ctrl.getResponse();
         const response = new ApiContracts.CreateTransactionResponse(apiResponse);
 
+        console.log('response: ' + JSON.stringify(response, null, 2));
+
         if(response !== null) {
             if(response.getMessages().getResultCode() === ApiContracts.MessageTypeEnum.OK) {
                 if(response.getTransactionResponse().getMessages() !== null) {
@@ -109,6 +112,5 @@ app.post('/checkout', (req, res) => {
         }
     });
 });
-
 
 app.listen(port);
